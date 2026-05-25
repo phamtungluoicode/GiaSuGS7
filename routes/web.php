@@ -48,9 +48,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset.form');
     Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.reset');
 
-    // Google OAuth
-    Route::get('/auth/google', [AuthController::class, 'getGoogleSignInUrl'])->name('auth.google');
-    Route::get('/auth/google/callback', [AuthController::class, 'loginCallback'])->name('auth.google.callback');
+    // // Google OAuth
+    // Route::get('/auth/google', [AuthController::class, 'getGoogleSignInUrl'])->name('auth.google');
+    // Route::get('/auth/google/callback', [AuthController::class, 'loginCallback'])->name('auth.google.callback');
 });
 
 // Đăng xuất
