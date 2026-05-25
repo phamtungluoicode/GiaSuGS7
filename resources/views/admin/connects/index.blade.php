@@ -19,62 +19,62 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @forelse($connects as $index => $connect)
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {{ $connects->firstItem() + $index }}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {{ $connect->user->name ?? 'N/A' }}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {{ $connect->teacher->name ?? 'N/A' }}
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {{ $connects->firstItem() + $index }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{ $connect->user->name ?? 'N/A' }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {{ $connect->teacher->name ?? 'N/A' }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
                         @if($connect->confirm_user == 1 && $connect->confirm_teacher == 1)
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-        Đã kết nối
-    </span>
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                            Đã kết nối
+                        </span>
 
-@elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
-        Đã hủy
-    </span>
+                        @elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                            Đã hủy
+                        </span>
 
-@else
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
-        Chờ xác nhận
-    </span>
-@endif
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            @if($connect->confirm_teacher == 1)
-                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Đã xác nhận</span>
-                            @else
-                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Chưa xác nhận</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        @else
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                            Chờ xác nhận
+                        </span>
+                        @endif
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        @if($connect->confirm_teacher == 1)
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Đã xác nhận</span>
+                        @else
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Chưa xác nhận</span>
+                        @endif
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
                         @if($connect->confirm_user == 1 && $connect->confirm_teacher == 1)
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-        Đã kết nối
-    </span>
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                            Đã kết nối
+                        </span>
 
-@elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
-        Đã hủy
-    </span>
+                        @elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
+                            Đã hủy
+                        </span>
 
-@else
-    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
-        Chờ xác nhận
-    </span>
-@endif
-                        </td>
-                    </tr>
+                        @else
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                            Chờ xác nhận
+                        </span>
+                        @endif
+                    </td>
+                </tr>
                 @empty
-                    <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">Không có dữ liệu</td>
-                    </tr>
+                <tr>
+                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">Không có dữ liệu</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>
