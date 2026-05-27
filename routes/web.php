@@ -170,6 +170,7 @@ Route::middleware(['auth', 'teacher'])->prefix('teacher')->name('teacher.')->gro
 
     Route::get('/connects', [\App\Http\Controllers\Teacher\ConnectController::class, 'index'])->name('connects.index');
     Route::post('/connects/{id}/confirm', [\App\Http\Controllers\Teacher\ConnectController::class, 'confirm'])->name('connects.confirm');
+    Route::post('/connects/{id}/deny', [\App\Http\Controllers\Teacher\ConnectController::class, 'deny'])->name('connects.deny');
 
     Route::get('/feedbacks', [\App\Http\Controllers\Teacher\FeedbackViewController::class, 'index'])->name('feedbacks.index');
 });

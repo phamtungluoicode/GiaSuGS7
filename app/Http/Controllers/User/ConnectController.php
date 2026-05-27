@@ -65,7 +65,6 @@ class ConnectController extends Controller
 
         DB::transaction(function () use ($connect, $user, $refund) {
             $connect->update(['confirm_user' => 2]);
-
             $user->update(['coin' => $user->coin + $refund]);
 
             History::create([

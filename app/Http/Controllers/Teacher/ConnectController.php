@@ -57,4 +57,24 @@ class ConnectController extends Controller
 
         return redirect()->back()->with('success', 'Xác nhận kết nối thành công.');
     }
+    public function deny($id)
+    {
+        $connect = Connect::where('id_teacher', Auth::id())->findOrFail($id);
+        $teacher = Auth::user();
+        $refund = (int) (self::HIRE_COST * 0.8);
+
+        DB::transaction(function () use ($connect, $teacher, $refund) {
+            $connect->update(['confirm_teacher' => 2]);
+            $teacher->update(['coin' => $teacher->coin + $refund]);
+
+            History::create([
+                'id_client' => $teacher->id,
+                'coint' => $refund,
+                'type' => 'Hoàn tiền từ chối kết nối',
+            ]);
+        });
+
+        return redirect()->back()->with('success', 'Đã từ chối kết nối. Hoàn lại ' . $refund . ' coin.');
+
+    }
 }

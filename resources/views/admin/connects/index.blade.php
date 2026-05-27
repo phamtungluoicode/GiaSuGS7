@@ -35,7 +35,7 @@
                             Đã kết nối
                         </span>
 
-                        @elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
+                        @elseif($connect->confirm_user == 2 && $connect->confirm_teacher == 2)
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                             Đã hủy
                         </span>
@@ -59,7 +59,7 @@
                             Đã kết nối
                         </span>
 
-                        @elseif($connect->confirm_user == 0 && $connect->confirm_teacher == 0)
+                        @elseif($connect->confirm_user == 2 && $connect->confirm_teacher == 2)
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                             Đã hủy
                         </span>
