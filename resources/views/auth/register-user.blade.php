@@ -20,10 +20,9 @@
                 required
                 autofocus
                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="Nguyễn Văn A"
-            >
+                placeholder="Nguyễn Văn A">
             @error('name')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
@@ -37,40 +36,58 @@
                 value="{{ old('email') }}"
                 required
                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="email@example.com"
-            >
+                placeholder="email@example.com">
             @error('email')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Password --}}
         <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="Tối thiểu 6 ký tự"
-            >
+
+            <div class="relative">
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                    placeholder="Tối thiểu 6 ký tự">
+
+                <button
+                    type="button"
+                    onclick="togglePassword('password', this)"
+                    class="absolute inset-y-0 right-3 flex items-center text-sm text-gray-500 hover:text-indigo-600">
+                    Hiện
+                </button>
+            </div>
+
             @error('password')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Password Confirmation --}}
         <div class="mb-4">
             <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Xác nhận mật khẩu</label>
-            <input
-                type="password"
-                id="password_confirmation"
-                name="password_confirmation"
-                required
-                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="Nhập lại mật khẩu"
-            >
+
+            <div class="relative">
+                <input
+                    type="password"
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-12 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                    placeholder="Nhập lại mật khẩu">
+
+                <button
+                    type="button"
+                    onclick="togglePassword('password_confirmation', this)"
+                    class="absolute inset-y-0 right-3 flex items-center text-sm text-gray-500 hover:text-indigo-600">
+                    Hiện
+                </button>
+            </div>
         </div>
 
         {{-- Phone --}}
@@ -82,10 +99,9 @@
                 name="phone"
                 value="{{ old('phone') }}"
                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="0912345678"
-            >
+                placeholder="0912345678">
             @error('phone')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
@@ -95,14 +111,13 @@
             <select
                 id="gender"
                 name="gender"
-                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-            >
+                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                 <option value="">-- Chọn giới tính --</option>
                 <option value="Nam" {{ old('gender') == 'Nam' ? 'selected' : '' }}>Nam</option>
                 <option value="Nữ" {{ old('gender') == 'Nữ' ? 'selected' : '' }}>Nữ</option>
             </select>
             @error('gender')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
@@ -114,10 +129,9 @@
                 id="date_of_birth"
                 name="date_of_birth"
                 value="{{ old('date_of_birth') }}"
-                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-            >
+                class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
             @error('date_of_birth')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
@@ -130,18 +144,16 @@
                 name="address"
                 value="{{ old('address') }}"
                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                placeholder="Nhập địa chỉ"
-            >
+                placeholder="Nhập địa chỉ">
             @error('address')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Submit --}}
         <button
             type="submit"
-            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition text-sm"
-        >
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition text-sm">
             Đăng ký
         </button>
     </form>
@@ -156,4 +168,17 @@
         </p>
     </div>
 </div>
+<script>
+    function togglePassword(inputId, button) {
+        const input = document.getElementById(inputId);
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = 'Ẩn';
+        } else {
+            input.type = 'password';
+            button.textContent = 'Hiện';
+        }
+    }
+</script>
 @endsection

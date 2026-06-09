@@ -20,26 +20,35 @@
                 required
                 autofocus
                 class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all duration-200 bg-stone-50/50 hover:border-stone-300"
-                placeholder="email@example.com"
-            >
+                placeholder="email@example.com">
             @error('email')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Password --}}
         <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-stone-700 mb-1">Mật khẩu</label>
-            <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all duration-200 bg-stone-50/50 hover:border-stone-300"
-                placeholder="Nhập mật khẩu"
-            >
+
+            <div class="relative">
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    class="w-full rounded-xl border border-stone-200 px-4 py-2.5 pr-12 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all duration-200 bg-stone-50/50 hover:border-stone-300"
+                    placeholder="Nhập mật khẩu">
+
+                <button
+                    type="button"
+                    onclick="togglePassword('password', this)"
+                    class="absolute inset-y-0 right-3 flex items-center text-sm text-stone-500 hover:text-primary-600">
+                    Hiện
+                </button>
+            </div>
+
             @error('password')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
@@ -50,8 +59,7 @@
                     type="checkbox"
                     name="remember"
                     class="rounded border-stone-300 text-primary-600 focus:ring-primary-500"
-                    {{ old('remember') ? 'checked' : '' }}
-                >
+                    {{ old('remember') ? 'checked' : '' }}>
                 <span class="text-sm text-stone-600">Ghi nhớ đăng nhập</span>
             </label>
             <a href="{{ route('password.forgot') }}" class="text-sm text-primary-600 hover:text-primary-700 hover:underline font-medium transition-colors">
@@ -62,8 +70,7 @@
         {{-- Submit --}}
         <button
             type="submit"
-            class="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 text-sm shadow-lg shadow-primary-200/50 hover:shadow-primary-300/50 hover:-translate-y-0.5"
-        >
+            class="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-300 text-sm shadow-lg shadow-primary-200/50 hover:shadow-primary-300/50 hover:-translate-y-0.5">
             Đăng nhập
         </button>
     </form>
@@ -105,4 +112,17 @@
         </p>
     </div>
 </div>
+<script>
+    function togglePassword(inputId, button) {
+        const input = document.getElementById(inputId);
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = 'Ẩn';
+        } else {
+            input.type = 'password';
+            button.textContent = 'Hiện';
+        }
+    }
+</script>
 @endsection

@@ -25,10 +25,9 @@
                     required
                     autofocus
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="Nguyễn Văn A"
-                >
+                    placeholder="Nguyễn Văn A">
                 @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -42,40 +41,58 @@
                     value="{{ old('email') }}"
                     required
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="email@example.com"
-                >
+                    placeholder="email@example.com">
                 @error('email')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
             {{-- Password --}}
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="Tối thiểu 6 ký tự"
-                >
+
+                <div class="relative">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-14 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                        placeholder="Tối thiểu 6 ký tự">
+
+                    <button
+                        type="button"
+                        onclick="togglePassword('password', this)"
+                        class="absolute inset-y-0 right-3 flex items-center text-sm text-gray-500 hover:text-indigo-600">
+                        Hiện
+                    </button>
+                </div>
+
                 @error('password')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
             {{-- Password Confirmation --}}
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Xác nhận mật khẩu</label>
-                <input
-                    type="password"
-                    id="password_confirmation"
-                    name="password_confirmation"
-                    required
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="Nhập lại mật khẩu"
-                >
+
+                <div class="relative">
+                    <input
+                        type="password"
+                        id="password_confirmation"
+                        name="password_confirmation"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-4 py-2.5 pr-14 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                        placeholder="Nhập lại mật khẩu">
+
+                    <button
+                        type="button"
+                        onclick="togglePassword('password_confirmation', this)"
+                        class="absolute inset-y-0 right-3 flex items-center text-sm text-gray-500 hover:text-indigo-600">
+                        Hiện
+                    </button>
+                </div>
             </div>
 
             {{-- Phone --}}
@@ -87,10 +104,9 @@
                     name="phone"
                     value="{{ old('phone') }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="0912345678"
-                >
+                    placeholder="0912345678">
                 @error('phone')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -100,14 +116,13 @@
                 <select
                     id="gender"
                     name="gender"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                     <option value="">-- Chọn giới tính --</option>
                     <option value="Nam" {{ old('gender') == 'Nam' ? 'selected' : '' }}>Nam</option>
                     <option value="Nữ" {{ old('gender') == 'Nữ' ? 'selected' : '' }}>Nữ</option>
                 </select>
                 @error('gender')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -119,10 +134,9 @@
                     id="date_of_birth"
                     name="date_of_birth"
                     value="{{ old('date_of_birth') }}"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
                 @error('date_of_birth')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -135,10 +149,9 @@
                     name="address"
                     value="{{ old('address') }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="Nhập địa chỉ"
-                >
+                    placeholder="Nhập địa chỉ">
                 @error('address')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
         </div>
@@ -156,10 +169,9 @@
                     name="Citizen_card"
                     value="{{ old('Citizen_card') }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="Nhập số CCCD"
-                >
+                    placeholder="Nhập số CCCD">
                 @error('Citizen_card')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -172,10 +184,9 @@
                     name="education_level"
                     value="{{ old('education_level') }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="VD: Đại học, Thạc sĩ, Tiến sĩ"
-                >
+                    placeholder="VD: Đại học, Thạc sĩ, Tiến sĩ">
                 @error('education_level')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -185,17 +196,16 @@
                 <select
                     id="school_id"
                     name="school_id"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                     <option value="">-- Chọn trường --</option>
                     @foreach ($schools as $school)
-                        <option value="{{ $school->id }}" {{ old('school_id') == $school->id ? 'selected' : '' }}>
-                            {{ $school->name }}
-                        </option>
+                    <option value="{{ $school->id }}" {{ old('school_id') == $school->id ? 'selected' : '' }}>
+                        {{ $school->name }}
+                    </option>
                     @endforeach
                 </select>
                 @error('school_id')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -208,10 +218,9 @@
                     name="exp"
                     value="{{ old('exp') }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
-                    placeholder="VD: 2 năm dạy kèm"
-                >
+                    placeholder="VD: 2 năm dạy kèm">
                 @error('exp')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -221,17 +230,16 @@
                 <select
                     id="DistrictID"
                     name="DistrictID"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                     <option value="">-- Chọn quận/huyện --</option>
                     @foreach ($districts as $district)
-                        <option value="{{ $district->id }}" {{ old('DistrictID') == $district->id ? 'selected' : '' }}>
-                            {{ $district->name }}
-                        </option>
+                    <option value="{{ $district->id }}" {{ old('DistrictID') == $district->id ? 'selected' : '' }}>
+                        {{ $district->name }}
+                    </option>
                     @endforeach
                 </select>
                 @error('DistrictID')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -241,17 +249,16 @@
                 <select
                     id="salary_id"
                     name="salary_id"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                     <option value="">-- Chọn mức lương --</option>
                     @foreach ($rankSalaries as $salary)
-                        <option value="{{ $salary->id }}" {{ old('salary_id') == $salary->id ? 'selected' : '' }}>
-                            {{ $salary->name }}
-                        </option>
+                    <option value="{{ $salary->id }}" {{ old('salary_id') == $salary->id ? 'selected' : '' }}>
+                        {{ $salary->name }}
+                    </option>
                     @endforeach
                 </select>
                 @error('salary_id')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -263,19 +270,18 @@
                     name="subjects[]"
                     multiple
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                    size="4"
-                >
+                    size="4">
                     @foreach ($subjects as $subj)
-                        <option value="{{ $subj->id }}" {{ is_array(old('subjects')) && in_array($subj->id, old('subjects')) ? 'selected' : '' }}>
-                            {{ $subj->name }}
-                        </option>
+                    <option value="{{ $subj->id }}" {{ is_array(old('subjects')) && in_array($subj->id, old('subjects')) ? 'selected' : '' }}>
+                        {{ $subj->name }}
+                    </option>
                     @endforeach
                 </select>
                 @error('subjects')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
                 @error('subjects.*')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -287,19 +293,18 @@
                     name="class_ids[]"
                     multiple
                     class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                    size="4"
-                >
+                    size="4">
                     @foreach ($classLevels as $classLevel)
-                        <option value="{{ $classLevel->id }}" {{ is_array(old('class_ids')) && in_array($classLevel->id, old('class_ids')) ? 'selected' : '' }}>
-                            {{ $classLevel->class }}
-                        </option>
+                    <option value="{{ $classLevel->id }}" {{ is_array(old('class_ids')) && in_array($classLevel->id, old('class_ids')) ? 'selected' : '' }}>
+                        {{ $classLevel->class }}
+                    </option>
                     @endforeach
                 </select>
                 @error('class_ids')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
                 @error('class_ids.*')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -309,17 +314,16 @@
                 <select
                     id="time_tutor_id"
                     name="time_tutor_id"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white"
-                >
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition bg-white">
                     <option value="">-- Chọn thời gian --</option>
                     @foreach ($timeSlots as $slot)
-                        <option value="{{ $slot->id }}" {{ old('time_tutor_id') == $slot->id ? 'selected' : '' }}>
-                            {{ $slot->name }}
-                        </option>
+                    <option value="{{ $slot->id }}" {{ old('time_tutor_id') == $slot->id ? 'selected' : '' }}>
+                        {{ $slot->name }}
+                    </option>
                     @endforeach
                 </select>
                 @error('time_tutor_id')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -330,10 +334,9 @@
                     type="file"
                     id="Certificate"
                     name="Certificate"
-                    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition"
-                >
+                    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition">
                 @error('Certificate')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
         </div>
@@ -346,18 +349,16 @@
                 name="description"
                 rows="3"
                 class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition resize-y"
-                placeholder="Mô tả ngắn về bản thân và phương pháp giảng dạy"
-            >{{ old('description') }}</textarea>
+                placeholder="Mô tả ngắn về bản thân và phương pháp giảng dạy">{{ old('description') }}</textarea>
             @error('description')
-                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Submit --}}
         <button
             type="submit"
-            class="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition text-sm"
-        >
+            class="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition text-sm">
             Đăng ký gia sư
         </button>
     </form>
@@ -372,4 +373,17 @@
         </p>
     </div>
 </div>
+<script>
+    function togglePassword(inputId, button) {
+        const input = document.getElementById(inputId);
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = 'Ẩn';
+        } else {
+            input.type = 'password';
+            button.textContent = 'Hiện';
+        }
+    }
+</script>
 @endsection
