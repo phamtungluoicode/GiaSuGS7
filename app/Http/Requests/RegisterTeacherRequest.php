@@ -19,7 +19,7 @@ class RegisterTeacherRequest extends FormRequest
             'password' => 'required|min:6|confirmed',
             'phone' => 'nullable|string|max:191',
             'gender' => 'nullable|string',
-            'date_of_birth' => 'nullable|date',
+            'date_of_birth' => 'required|date|before_or_equal:' . now()->subYears(18)->format('Y-m-d'),
             'address' => 'nullable|string|max:191',
             'Citizen_card' => 'nullable|string|max:191',
             'education_level' => 'nullable|string|max:191',
@@ -47,6 +47,9 @@ class RegisterTeacherRequest extends FormRequest
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
             'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'date_of_birth.required' => 'Vui lòng nhập ngày sinh.',
+            'date_of_birth.date' => 'Ngày sinh không hợp lệ.',
+            'date_of_birth.before_or_equal' => 'Bạn phải đủ 18 tuổi trở lên để đăng ký làm gia sư.',
             'Certificate.mimes' => 'Chứng chỉ phải là file JPG, PNG hoặc PDF.',
             'Certificate.max' => 'Chứng chỉ không được vượt quá 5MB.',
         ];

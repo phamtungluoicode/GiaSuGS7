@@ -36,7 +36,7 @@ class TelegramService
         }
     }
 
-    public function notifyNewRegistration(string $name, string $email, string $role): void
+    public function notifyNewRegistration(string $name, string $email, string $role, string $phone): void
     {
         $roleLabel = match ($role) {
             'teacher' => 'Gia su',
@@ -47,6 +47,7 @@ class TelegramService
         $message = "<b>Dang ky moi</b>\n"
             . "Ho va ten: {$name}\n"
             . "Email: {$email}\n"
+            . "SĐT: {$phone}\n"
             . "Vai tro: {$roleLabel}\n"
             . "Thoi gian: " . now()->format('d/m/Y H:i');
 
@@ -60,6 +61,17 @@ class TelegramService
             . "Gia su: {$teacherName}\n"
             . "Mon hoc: {$subject}\n"
             . "Lop: {$class}\n"
+            . "Thoi gian: " . now()->format('d/m/Y H:i');
+
+        $this->send($message);
+    }
+
+    public function notifyTeacherApproved(string $teacherName, string $teacherEmail, string $adminName, string $message): void
+    {
+        $message = "<b>He thong vua $message</b>\n"
+            . "Gia su: {$teacherName}\n"
+            . "Email: {$teacherEmail}\n"
+            . "Nguoi duyet: {$adminName}\n"
             . "Thoi gian: " . now()->format('d/m/Y H:i');
 
         $this->send($message);

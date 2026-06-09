@@ -33,7 +33,13 @@ class ProfileController extends Controller
         $districts = District::all();
 
         return view('teacher.edit-profile', compact(
-            'user', 'schools', 'subjects', 'classLevels', 'timeSlots', 'rankSalaries', 'districts'
+            'user',
+            'schools',
+            'subjects',
+            'classLevels',
+            'timeSlots',
+            'rankSalaries',
+            'districts'
         ));
     }
 
@@ -59,13 +65,27 @@ class ProfileController extends Controller
             'class_ids.*' => 'integer|exists:class_levels,id',
             'time_tutor_id' => 'nullable|string',
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'Certificate' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'Certificate' => 'nullable|file|mimes:pdf|max:2048',
+        ], [
+            'Certificate.uploaded' => 'Bạn chỉ được upload file PDF dưới 2MB.',
+            'Certificate.max' => 'Bạn chỉ được upload file PDF dưới 2MB.',
+            'Certificate.mimes' => 'Chứng chỉ chỉ được phép là file PDF.',
+            'Certificate.file' => 'Chứng chỉ phải là một file hợp lệ.',
         ]);
 
         $data = $request->only([
-            'name', 'phone', 'address', 'gender', 'date_of_birth',
-            'description', 'exp', 'education_level', 'school_id',
-            'DistrictID', 'salary_id', 'time_tutor_id',
+            'name',
+            'phone',
+            'address',
+            'gender',
+            'date_of_birth',
+            'description',
+            'exp',
+            'education_level',
+            'school_id',
+            'DistrictID',
+            'salary_id',
+            'time_tutor_id',
         ]);
 
         if ($request->hasFile('avatar')) {

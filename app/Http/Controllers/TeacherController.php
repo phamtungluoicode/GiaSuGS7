@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\School;
 use App\Models\Subject;
+use App\Models\TutorJob;
 use App\Models\ClassLevel;
 use App\Models\TimeSlot;
 use App\Models\RankSalary;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\WelcomeRegistrationMail;
 use App\Services\TelegramService;
 use Illuminate\Support\Facades\Mail;
+
 class TeacherController extends Controller
 {
     public function index(Request $request)
@@ -39,7 +41,12 @@ class TeacherController extends Controller
         $districts = District::all();
 
         return view('admin.teachers.create', compact(
-            'schools', 'subjects', 'classLevels', 'timeSlots', 'rankSalaries', 'districts'
+            'schools',
+            'subjects',
+            'classLevels',
+            'timeSlots',
+            'rankSalaries',
+            'districts'
         ));
     }
 
@@ -106,16 +113,28 @@ class TeacherController extends Controller
             'role' => 'teacher',
         ]));
 
-         app(TelegramService::class)->notifyNewRegistration($user->name, $user->email, 'teacher');
+        app(TelegramService::class)->notifyNewRegistration($user->name, $user->email, 'teacher', $user->phone);
         return redirect()->route('admin.teachers.index')
             ->with('success', 'Thêm gia sư thành công.');
     }
 
+    // public function show($id)
+    // {
+    //     $teacher = User::findOrFail($id);
+    //     // dd($teacher);
+    //     return view('admin.teachers.show', compact('teacher'));
+    // }
+
     public function show($id)
     {
         $teacher = User::findOrFail($id);
-        // dd($teacher);
-        return view('admin.teachers.show', compact('teacher'));
+
+        $jobs = TutorJob::with('user')
+            ->where('id_teacher', $id)
+            ->latest()
+            ->get();
+
+        return view('admin.teachers.show', compact('teacher', 'jobs'));
     }
 
     public function edit($id)
@@ -128,7 +147,13 @@ class TeacherController extends Controller
         $rankSalaries = RankSalary::all();
         $districts = District::all();
         return view('admin.teachers.edit', compact(
-            'teacher', 'schools', 'subjects', 'classLevels', 'timeSlots', 'rankSalaries', 'districts'
+            'teacher',
+            'schools',
+            'subjects',
+            'classLevels',
+            'timeSlots',
+            'rankSalaries',
+            'districts'
         ));
     }
 

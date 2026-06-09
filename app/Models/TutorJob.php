@@ -39,4 +39,25 @@ class TutorJob extends Model
     {
         return $this->hasOne(Connect::class, 'id_job');
     }
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    public function userHired()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    // 2. Quan hệ lấy thông tin gia sư
+    public function teacherHired()
+    {
+        return $this->belongsTo(User::class, 'id_teacher', 'id');
+    }
+
+    // 3. Quan hệ lấy thông tin môn học từ bảng subjects
+    public function subjectModelHired()
+    {
+        return $this->belongsTo(Subject::class, 'subject', 'id');
+    }
 }

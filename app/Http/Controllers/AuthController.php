@@ -61,7 +61,7 @@ class AuthController extends Controller
             'role' => 'user',
         ]));
 
-        app(TelegramService::class)->notifyNewRegistration($user->name, $user->email, 'user');
+        app(TelegramService::class)->notifyNewRegistration($user->name, $user->email, 'user', $user->phone);
 
         return redirect()->route('login')->with('success', 'Đăng ký thành công! Vui lòng kiểm tra email và đăng nhập.');
     }
