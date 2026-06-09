@@ -48,6 +48,9 @@
                             {{ $user->phone }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+                        <a href="{{ route('admin.users.show', $user->id) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700 transition">
+                                Xem
+                            </a>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="inline-flex items-center px-3 py-1.5 bg-yellow-500 text-white text-xs font-medium rounded hover:bg-yellow-600 transition">
                                 Sửa
                             </a>

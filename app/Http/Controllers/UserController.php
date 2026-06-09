@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\TutorJob;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +18,7 @@ class UserController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', '%' . $search . '%')
-                  ->orWhere('email', 'like', '%' . $search . '%');
+                    ->orWhere('email', 'like', '%' . $search . '%');
             });
         }
 
@@ -25,6 +27,20 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        // dd($teacher);
+        $jobs = TutorJob::with('user')
+            ->where('id_user', $id)
+            ->latest()
+            ->get();
+            // dd($jobs);
+        $feedbackTeacher = Feedback::with(['sender', 'teacher'])->where('id_sender', $id)
+            ->latest()
+            ->get();
+        return view('admin.users.show', compact('user','jobs','feedbackTeacher'));
+    }
     public function create()
     {
         return view('admin.users.create');

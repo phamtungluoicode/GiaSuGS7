@@ -80,7 +80,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('teachers', TeacherController::class);
 
     // Quản lý người dùng
-    Route::resource('users', UserController::class)->except(['show']);
+    Route::resource('users', UserController::class);
 
     // Quản lý môn học
     Route::resource('subjects', SubjectController::class)->except(['show']);

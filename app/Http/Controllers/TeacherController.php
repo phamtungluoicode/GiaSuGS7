@@ -10,6 +10,7 @@ use App\Models\ClassLevel;
 use App\Models\TimeSlot;
 use App\Models\RankSalary;
 use App\Models\District;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\WelcomeRegistrationMail;
@@ -133,8 +134,10 @@ class TeacherController extends Controller
             ->where('id_teacher', $id)
             ->latest()
             ->get();
-
-        return view('admin.teachers.show', compact('teacher', 'jobs'));
+        $feedbackTeacher= Feedback::with(['sender', 'teacher']) ->where('id_teacher', $id)
+        ->latest()
+        ->get();
+        return view('admin.teachers.show', compact('teacher', 'jobs', 'feedbackTeacher'));
     }
 
     public function edit($id)
