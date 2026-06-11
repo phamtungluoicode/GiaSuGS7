@@ -61,7 +61,7 @@ class ConnectController extends Controller
     {
         $connect = Connect::where('id_teacher', Auth::id())->findOrFail($id);
         $teacher = Auth::user();
-        $refund = (int) (self::HIRE_COST * 0.8);
+        $refund = (int) (self::HIRE_COST * 0.4);
 
         DB::transaction(function () use ($connect, $teacher, $refund) {
             $connect->update(['confirm_teacher' => 2]);

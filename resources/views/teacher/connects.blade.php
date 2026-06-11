@@ -83,7 +83,7 @@
                                     @csrf
                                     <button type="submit"
                                         class="inline-flex items-center px-3 py-1.5 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700 transition"
-                                        onclick="return confirm('Từ chối kết nối? Bạn sẽ được hoàn lại 80 coin.')">
+                                        onclick="return confirm('Từ chối kết nối? Bạn sẽ được hoàn lại 40 coin.')">
                                         Chưa kết nối
                                     </button>
                                 </form>

@@ -42,7 +42,7 @@
                     <span class="text-indigo-100 text-sm mt-1">Thêm coin vào tài khoản</span>
                 </a>
 
-                <a href="{{ route('payment.transactions') }}"
+                <!-- <a href="{{ route('payment.transactions') }}"
                    class="group flex flex-col items-center justify-center text-center bg-slate-700 text-white px-6 py-6 rounded-2xl hover:bg-slate-800 transition shadow-md hover:shadow-lg">
                     <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-3 group-hover:scale-110 transition">
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,8 +50,8 @@
                         </svg>
                     </div>
                     <span class="font-semibold text-lg">Lịch sử nạp</span>
-                    <span class="text-slate-200 text-sm mt-1">Xem giao dịch nạp tiền</span>
-                </a>
+                    <span class="text-slate-200 text-sm mt-1">Xem lịch sử giao dịch nạp tiền</span>
+                </a> -->
 
                 <a href="{{ route('payment.transactionscoin') }}"
                    class="group flex flex-col items-center justify-center text-center bg-amber-600 text-white px-6 py-6 rounded-2xl hover:bg-amber-700 transition shadow-md hover:shadow-lg">
@@ -61,7 +61,7 @@
                         </svg>
                     </div>
                     <span class="font-semibold text-lg">Lịch sử coin</span>
-                    <span class="text-amber-100 text-sm mt-1">Theo dõi coin nội bộ</span>
+                    <span class="text-amber-100 text-sm mt-1">Theo dõi lịch sử coin</span>
                 </a>
             </div>
         </div>
