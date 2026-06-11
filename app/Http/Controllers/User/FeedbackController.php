@@ -33,7 +33,9 @@ class FeedbackController extends Controller
             ->exists();
 
         if ($alreadyFeedback) {
-            return redirect()->back()->with('error', 'Bạn đã đánh giá gia sư này rồi.');
+            return redirect()
+                ->route('tutors.show', $teacherId)
+                ->with('error', 'Bạn đã đánh giá gia sư này rồi.');
         }
 
         return view('user.feedback', compact('teacher'));
@@ -46,7 +48,9 @@ class FeedbackController extends Controller
             ->exists();
 
         if ($alreadyFeedback) {
-            return redirect()->back()->with('error', 'Bạn đã đánh giá gia sư này rồi.');
+            return redirect()
+                ->route('tutors.show', $teacherId)
+                ->with('error', 'Bạn đã đánh giá gia sư này rồi.');
         }
 
         Feedback::create([
@@ -56,6 +60,8 @@ class FeedbackController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->back()->with('success', 'Gửi đánh giá thành công. Cảm ơn bạn!');
+        return redirect()
+            ->route('tutors.show', $teacherId)
+            ->with('success', 'Gửi đánh giá thành công. Cảm ơn bạn!');
     }
 }

@@ -173,4 +173,11 @@ class TransactionController extends Controller
 
         return view('payment.transaction-history', compact('transactions'));
     }
+
+    public function transactionHistoryCoin()
+{
+    $histories = Auth::user()->histories()->latest()->paginate(10);
+
+    return view('payment.money-coin', compact('histories'));
+}
 }

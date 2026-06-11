@@ -70,6 +70,8 @@ Route::middleware('auth')->prefix('payment')->name('payment.')->group(function (
     Route::get('/callback', [\App\Http\Controllers\TransactionController::class, 'depositCallback'])->name('callback');
     Route::get('/balance', [\App\Http\Controllers\TransactionController::class, 'balance'])->name('balance');
     Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'transactionHistory'])->name('transactions');
+    Route::get('/transactionscoin', [\App\Http\Controllers\TransactionController::class, 'transactionHistoryCoin'])
+    ->name('transactionscoin');
 });
 
 // Admin routes
